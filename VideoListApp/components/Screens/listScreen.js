@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert,ScrollView } from 'react-native';
 import { styles } from '../Styles';
 import FSection from '../FSection';
+import VideoCard from '../CartaDeVideo.js';
 //import { db } from '../firebaseConfig'; // Para obtener los datos de Firebase
 //import { collection, getDocs } from 'firebase/firestore'; // Para obtener los posts desde Firestore
 
@@ -28,6 +29,23 @@ export default function listScreen({ navigation }) {
 
       {/* Lista */}
       <View style={{ flex: 7, width: '100%' }}>
+      <ScrollView>
+        <VideoCard
+          videoUrl="https://www.youtube.com/watch?v=XGxIE1hr0w4"
+          title="Video de Ejemplo 1"
+          description="Este es un video de ejemplo."
+        />
+        <VideoCard
+          videoUrl="https://www.youtube.com/watch?v=9bZkp7q19f0"
+          title="Video de Ejemplo 2"
+          description="Otro video de ejemplo."
+        />
+        <VideoCard
+            videoUrl="https://www.instagram.com/p/XXXXXXXX/"
+            title="Video de Instagram"
+            description="Mira este increíble video."
+        />
+      </ScrollView>
       </View>
 
       {/* Sección inferior */}

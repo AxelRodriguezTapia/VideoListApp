@@ -7,6 +7,16 @@ import FSection from '../FSection';
 
 export default function newVideoScreen({ navigation }) {
   const [errorMsg, setErrorMsg] = useState(null);
+  const handlePress = (id) => {
+    console.log("Han clicat al botó " + id);
+    if (id == 1){
+      navigation.navigate("listScreen");
+    }else if (id == 2){
+      navigation.navigate("favouriteScreen");
+    }else if (id == 3){
+      navigation.navigate("userScreen");
+    }
+  };
 
 
   return (
@@ -14,6 +24,7 @@ export default function newVideoScreen({ navigation }) {
       {/* Sección superior */}
       <View style={{ flex: 1 }}>
         <Text>VideoListApp</Text>
+        <Text>New Video</Text>
       </View>
 
       {/* Lista */}
@@ -22,7 +33,7 @@ export default function newVideoScreen({ navigation }) {
 
       {/* Sección inferior */}
       <View style={{ flex: 0.9, justifyContent: 'center', alignItems: 'center', padding: 0 }}>
-        <FSection currentSection={1} onPress={() => navigation.navigate("NewMarker")} />
+        <FSection currentSection={1} onPress={handlePress} />
       </View>
     </View>
   );
