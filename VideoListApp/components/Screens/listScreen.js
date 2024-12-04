@@ -127,7 +127,7 @@ export default function ListScreen({ navigation }) {
     <View style={{ flex: 1 }}>
       {/* Sección del título con gradiente */}
       <LinearGradient
-        colors={['#ff0000', '#B60000', '#640000']}
+        colors={['#3498db', '#2980b9', '#1abc9c']}  // Definimos el gradiente azul-verde
         style={{ padding: 20, alignItems: 'center', borderBottomWidth: 2, borderBottomColor: '#2c3e50' }}
       >
         <Text style={{

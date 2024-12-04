@@ -6,7 +6,7 @@ import FButton from './FButton';
 export default function FSection({ currentSection, onPress }) {
   return (
     <LinearGradient
-      colors={['#ff0000', '#B60000', '#640000']}
+    colors={['#3498db', '#2980b9', '#1abc9c']}  // Definimos el gradiente azul-verde
       style={styles.gradientBackground}
     >
       <View style={styles.buttonRow}>
