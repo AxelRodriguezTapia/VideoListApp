@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 
-
 import loginScreen from "./components/Screens/loginScreen";
 import favouriteScreen from "./components/Screens/favouritesScreen";
 import listScreen from "./components/Screens/listScreen";
@@ -16,6 +15,7 @@ import React from 'react';
 // Importa las dependencias de navegación
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RegisterScreen from "./components/Screens/registerScreen.js";
 
 // Define el stack de navegación
 const Stack = createNativeStackNavigator();
@@ -35,12 +35,13 @@ function HomeScreen({ navigation }) {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="listScreen">
+      <Stack.Navigator initialRouteName="loginScreen">
         <Stack.Screen name="newVideoScreen" component={newVideoScreen} options = {{animation: 'none', headerShown: false}}/>
         <Stack.Screen name="favouriteScreen" component={favouriteScreen} options = {{animation: 'none', headerShown: false}}/>
         <Stack.Screen name="listScreen" component={listScreen} options = {{animation: 'none', headerShown: false}}/>
         <Stack.Screen name="loginScreen" component={loginScreen} options = {{animation: 'none', headerShown: false}}/>
         <Stack.Screen name="userScreen" component={userScreen} options = {{animation: 'none', headerShown: false}}/>
+        <Stack.Screen name="registerScreen" component={RegisterScreen} options = {{animation: 'none',headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

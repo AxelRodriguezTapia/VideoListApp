@@ -4,24 +4,24 @@ import { WebView } from 'react-native-webview';
 
 // Componente VideoCard para mostrar el video
 export default function VideoCard({ videoUrl, title, description }) {
-  // Función para verificar si la URL es de YouTube
   const isYouTube = videoUrl.includes('youtube.com/watch');
   const isInstagram = videoUrl.includes('instagram.com/p');
   const isTiktok = videoUrl.includes('tiktok.com/');
 
-  // Extraemos el ID del video de YouTube
   const videoId = isYouTube ? videoUrl.split('v=')[1] : null;
-  // URL de Instagram, ya está lista para ser usada
   const instagramUrl = isInstagram ? videoUrl : null;
+
+  // Generar URL de incrustación para TikTok
+  const tiktokEmbedUrl = isTiktok
+    ? `https://www.tiktok.com/embed/${videoUrl.split('/video/')[1]}`
+    : null;
 
   return (
     <View style={{ margin: 10 }}>
       <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{title}</Text>
       <Text>{description}</Text>
 
-      {/* Renderiza contenido basado en la plataforma del video */}
       {isYouTube ? (
-        // Si es un video de YouTube
         <WebView
           source={{ uri: `https://www.youtube.com/embed/${videoId}` }}
           style={{ height: 200, marginTop: 10 }}
@@ -29,9 +29,15 @@ export default function VideoCard({ videoUrl, title, description }) {
           domStorageEnabled={true}
         />
       ) : isInstagram ? (
-        // Si es un video de Instagram
         <WebView
           source={{ uri: instagramUrl }}
+          style={{ height: 580, marginTop: 10 }}
+          javaScriptEnabled={true}
+          domStorageEnabled={true}
+        />
+      ) : isTiktok ? (
+        <WebView
+          source={{ uri: tiktokEmbedUrl }}
           style={{ height: 580, marginTop: 10 }}
           javaScriptEnabled={true}
           domStorageEnabled={true}

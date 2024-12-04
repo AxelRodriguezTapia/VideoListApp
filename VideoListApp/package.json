@@ -16,8 +16,10 @@
     "expo-linear-gradient": "^14.0.1",
     "expo-status-bar": "~2.0.0",
     "expo-video": "^2.0.1",
+    "firebase": "^11.0.2",
     "react": "18.3.1",
     "react-native": "0.76.3",
+    "react-native-instagram-embed": "^0.0.6",
     "react-native-video": "^6.8.2",
     "react-native-webview": "^13.12.4",
     "react-video": "^1.5.3"
