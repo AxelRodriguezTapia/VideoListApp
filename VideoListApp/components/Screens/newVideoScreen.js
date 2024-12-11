@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, Alert } from 'react-native';
 import { db, auth } from '../firebaseConfig';
 import { doc, setDoc, updateDoc, arrayUnion, collection, getDocs, addDoc } from 'firebase/firestore'; // Para actualizar en Firestore
 import { Picker } from '@react-native-picker/picker';  // Asegúrate de tener esta librería instalada
+import { serverTimestamp } from 'firebase/firestore'; // Para usar timestamps del servidor
 
 export default function NewVideoScreen({ navigation }) {
   const [url, setUrl] = useState('');
@@ -74,7 +75,12 @@ export default function NewVideoScreen({ navigation }) {
     setLoading(true);
 
     try {
-      const video = { url, title, description };
+      const video = { 
+        url, 
+        title, 
+        description, 
+        createdAt: new Date().toISOString(), // Timestamp local
+      };
 
       // Referencia al documento de la lista seleccionada
       const listDocRef = doc(db, 'userSaves', currentUser.uid, 'lists', selectedList);

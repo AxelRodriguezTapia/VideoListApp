@@ -112,6 +112,7 @@ export default function FavouriteScreen({ navigation }) {
                 <VideoCard
                   videoUrl={video.url}
                   title={video.title}
+                  createdAt={video.createdAt}
                   description={video.description}
                   onToggleFavorite={() => toggleFavorite(video)}  // Usamos esta función de toggle para los favoritos
                   isFavorite={favoriteVideos.some(fav => fav.url === video.url)}  // Comprobamos si el video está en favoritos

@@ -62,7 +62,7 @@ export default function UserScreen({ navigation }) {
 
           {/* Botón de Logout */}
           <TouchableOpacity onPress={handleLogout}>
-            <Text style={styles.logoutText}>Cerrar sesión</Text>
+            <Text style={styles.logoutText}>Cerrar</Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
   logoutText: {
     fontSize: 18,
     color: '#e74c3c',  // Rojo para destacar el logout
-    textAlign: 'right',
     padding: 10,
+    fontWeight: 'bold',
   },
   loadingContainer: {
     flex: 1,

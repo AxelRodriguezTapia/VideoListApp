@@ -4,7 +4,7 @@ import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Para los íconos de corazón
 
 // Componente VideoCard para mostrar el video
-export default function VideoCard({ videoUrl, title, description, onToggleFavorite, isFavorite }) {
+export default function VideoCard({ videoUrl, title, description, createdAt, onToggleFavorite, isFavorite }) {
   const isYouTubeLong = videoUrl.includes('youtube.com/watch'); // URL larga de YouTube
   const isYouTubeShort = videoUrl.includes('youtu.be/'); // URL corta de YouTube
   const isInstagram = videoUrl.includes('instagram.com/p');
@@ -42,8 +42,16 @@ export default function VideoCard({ videoUrl, title, description, onToggleFavori
         />
       </TouchableOpacity>
 
+      {/* Título y descripción */}
       <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{title}</Text>
       <Text>{description}</Text>
+
+      {/* Fecha de creación */}
+      {createdAt && (
+        <Text style={{ fontSize: 14, color: 'gray', marginTop: 5 }}>
+          Fecha de creación: {new Date(createdAt).toLocaleDateString()}
+        </Text>
+      )}
 
       {/* Reproducir video de YouTube (largo o corto) */}
       {isYouTubeLong || isYouTubeShort ? (
@@ -52,7 +60,7 @@ export default function VideoCard({ videoUrl, title, description, onToggleFavori
           style={{ height: 200, marginTop: 10 }}
           javaScriptEnabled={true}
           domStorageEnabled={true}
-          allowsFullscreenVideo={true}  // Permitir pantalla completa en videos de YouTube
+          allowsFullscreenVideo={true} // Permitir pantalla completa en videos de YouTube
         />
       ) : isInstagram ? (
         <WebView
@@ -60,7 +68,7 @@ export default function VideoCard({ videoUrl, title, description, onToggleFavori
           style={{ height: 580, marginTop: 10 }}
           javaScriptEnabled={true}
           domStorageEnabled={true}
-          allowsFullscreenVideo={true}  // Permitir pantalla completa en Instagram
+          allowsFullscreenVideo={true} // Permitir pantalla completa en Instagram
         />
       ) : isTiktok ? (
         <WebView
@@ -68,7 +76,7 @@ export default function VideoCard({ videoUrl, title, description, onToggleFavori
           style={{ height: 580, marginTop: 10 }}
           javaScriptEnabled={true}
           domStorageEnabled={true}
-          allowsFullscreenVideo={true}  // Permitir pantalla completa en TikTok
+          allowsFullscreenVideo={true} // Permitir pantalla completa en TikTok
         />
       ) : (
         <Text>El enlace no es compatible.</Text>

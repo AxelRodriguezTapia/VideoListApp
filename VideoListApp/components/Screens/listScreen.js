@@ -168,24 +168,25 @@ export default function ListScreen({ navigation }) {
       </View>
 
       {/* Lista de videos */}
-      <View style={{ flex: 7, width: '100%' }}>
-        <ScrollView>
-          {userVideos.length > 0 ? (
-            userVideos.map((video, index) => (
-              <VideoCard
-                key={index}
-                videoUrl={video.url}
-                title={video.title}
-                description={video.description}
-                onToggleFavorite={() => toggleFavorite(video)}  // Usamos esta función de toggle para los favoritos
-                isFavorite={favoriteVideos.some(fav => fav.url === video.url)}  // Comprobamos si el video está en favoritos
-              />
-            ))
-          ) : (
-            <Text style={{ textAlign: 'center', marginTop: 20 }}>No tienes videos guardados en esta lista.</Text>
-          )}
-        </ScrollView>
-      </View>
+<View style={{ flex: 7, width: '100%' }}>
+  <ScrollView>
+    {userVideos.length > 0 ? (
+      [...userVideos].reverse().map((video, index) => ( // Invertimos el array antes de mapear
+        <VideoCard
+          key={index}
+          videoUrl={video.url}
+          title={video.title}
+          createdAt={video.createdAt}
+          description={video.description}
+          onToggleFavorite={() => toggleFavorite(video)}  // Usamos esta función de toggle para los favoritos
+          isFavorite={favoriteVideos.some(fav => fav.url === video.url)}  // Comprobamos si el video está en favoritos
+        />
+      ))
+    ) : (
+      <Text style={{ textAlign: 'center', marginTop: 20 }}>No tienes videos guardados en esta lista.</Text>
+    )}
+  </ScrollView>
+</View>
 
       {/* Sección inferior (Footer) */}
       <View style={{ flex: 0.9, justifyContent: 'center', alignItems: 'center', padding: 0 }}>
